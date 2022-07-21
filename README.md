@@ -6,14 +6,14 @@ Besides, it lessens one's reliance on timers or background processes that run al
 
 Access to the Android AlarmManager, which functions quite differently from iOS Local Notifications, is made available via this module. 
 
-## Steps to follow
-
-* Capture the alarm time using a TimePicker
-* Schedule an alarm using Alarm Manager and a Pending Intent
-* Start the Alarm Service using a Broadcast Receiver
-* Use Ringtone and Vibrator to activate the alarm
-* Managing Dismissal of an Alarm
-* Cancelling an Alarm using the Alarm Manager and a Pending Intent
+## Features 
+* Set a once off alarm
+* Set a recurring alarm on set days of the week
+* Disable and re-enable an alarm
+* Play a looped ringtone for the alarm that is active
+* Play a vibration effect for the alarm that is active
+* Show a notification for the alarm this is active
+* Dismiss or snooze an alarm   
 
 ## Components
 * Time Picker
@@ -27,6 +27,25 @@ Access to the Android AlarmManager, which functions quite differently from iOS L
 * Calendar
 * MVVM Design Pattern
 * LiveData, Observer and Repository
+
+## Steps to follow
+### Step 1: Capturing the Alarm Time 
+TimePicker is used to capture the alarm time and ToggleButton is added to set the alarm on or off. Initially, ToggleButton is set to off. It is set on when an alarm is set. In __AlarmSet.java__ class `onToggleClicked( )` method is implemented in which the current hour and the minute is set using the calendar. 
+
+The `getCurrentHour()` and `getCurrentMinute()` methods were required to retrieve the hour and minute from the TimePicker widget prior to Android API level 23.
+But now use the `getHour()` and `getMinute()` methods are used since the earlier methods have been deprecated. 
+
+### Step 2: Scheduling an Alarm
+The alarm is scheduled using the AlarmManager.
+The `setExact(...)` function on the AlarmManager with the arguments is used to schedule the alarm if it is not recurring. __AlarmManager.RTC_WAKEUP__ alarm type (meaning it will wake up the device to fire the alarm if the screen is off), the time of the alarm in milliseconds and the pending intent previously created. If the alarm is recurring, it is scheduled using the `AlarmManager.setRepeating(...)` function with the parameters __AlarmManager.RTC WAKEUP__ alarm type, the alarm's millisecond duration, the repeat interval (which is set to 1 day), and the previously established pending intent.
+
+<b>Sample:</b>
+<pre><code>
+alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, time, 30000, pendingIntent);
+</code></pre>
+
+### Step 3: Starting the Alarm Service
+
 
 
 
