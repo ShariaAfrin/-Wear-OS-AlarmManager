@@ -99,5 +99,22 @@ else {
 
 </code></pre>
 
+## Wrapping Up
+Android AlarmManager is a class that provides access to alarm services of the system. Alarm manager allows the users to create a list of items with a reminder time associated with each task. We basically have a means to handle time-based processes thanks to alarms.
+
+Basically, an alarm has the qualities listed below:
+* It can function independently of the application, which enables the alarm to start the event even if the device is dormant or the application is not open.
+* The alarm executes intents at predetermined periods or times.
+* It can be used in conjunction with broadcast receivers to carry out specific tasks or launch services.
+* It helps in minimizing the resource requirements.
+* Unless the alarm's forcibly stopped or the device resets, it will continue to run.
+
+
+To get notification at a particular time with alarm manager in the android studio The following features are needed:
+* Using speech to text convertor to creat event name from the user’s speech.
+* Enter the description through text keyboard or use speech to text.
+* Select the date and time on which event is scheduled and then submit.
+
+
 
 
