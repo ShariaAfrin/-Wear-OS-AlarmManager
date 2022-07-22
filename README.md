@@ -59,6 +59,9 @@ If not, the broadcast is related to an alarm, and we get more information from t
 
 If the alarm is not a recurring alarm, we use the `startService(...)` method on the context and supply an Intent with the alarm's title to start the alarm service. 
 
+When an alarm is repeating, further checks are made in the broadcast's intent extras to see if the current day of the week is acceptable for the recurring alert.
+We won't activate the alarm service till such is the case. 
+
 <b>Sample Code:</b>
 <pre><code>
 public void onReceive(Context context, Intent intent) {
@@ -83,6 +86,7 @@ public void onReceive(Context context, Intent intent) {
 ### Step 4: Cancelling an Alarm
 Using an __AlarmManager__ to schedule an alarm, the procedure is quite similar to the process using an __AlarmManager__ to cancel an alarm. 
 We first get a reference to the __AlarmManager __by executing `getSystemService(ALARM SERVICE)` in the `cancel()` method.
+
 Then, using the __AlarmBroadcastReceiver__, we build an intent and use it to generate a pending intent with a reference to the alarm id we specified when setting the alarm.
 The alarm will be cancelled once we use the __AlarmManager's__ `cancel(PendingIntent)` method, handing it the __PendingIntent__ we generated as a parameter. 
 
