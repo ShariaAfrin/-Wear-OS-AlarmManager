@@ -6,6 +6,10 @@ Besides, it lessens one's reliance on timers or background processes that run al
 
 Access to the Android AlarmManager, which functions quite differently from iOS Local Notifications, is made available via this module. 
 
+
+![The-Google-Clock-71-debuts-a-new-design-in-Wear](https://user-images.githubusercontent.com/86880351/180390156-35f735b4-187f-42d1-a62a-0663a1588e82.jpg)
+
+
 ## Features 
 * Set a once off alarm
 * Set a recurring alarm on set days of the week
